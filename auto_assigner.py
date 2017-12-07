@@ -52,6 +52,10 @@ def set_assignee_to_issue(candidates, issue):
             issue.number, [user.login for user in issue.assignees]))
         return
 
+    creator = issue.user.login
+    candidates = list(candidates)  # copy
+    if creator in candidates:
+        candidates.remove(creator)
     assignee = random.choice(candidates)
     issue.edit(assignees=[assignee])
     print('Issue/Pull-Request #{} assigned to {}'.format(
