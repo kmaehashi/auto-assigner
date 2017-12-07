@@ -65,8 +65,10 @@ def main(args=sys.argv[1:]):
     org = g.get_organization(params.organization)
     repo = org.get_repo(params.repo)
 
+    print('Getting team members...')
     team = get_team_by_name(org, params.team)
     candidates = [member.login for member in team.get_members()]
+    print('Team members are: {}'.format(candidates))
 
     if params.all_pull_requests:
         print('Getting all issues (this may take a while)...')
