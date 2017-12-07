@@ -49,7 +49,7 @@ def get_team_by_name(org, name):
 def set_assignee_to_issue(candidates, issue):
     if 0 < len(issue.assignees):
         print('Warning: Issue/Pull-Request #{} already assigned to {}'.format(
-            params.issue, [user.login for user in issue.assignees]))
+            issue.number, [user.login for user in issue.assignees]))
         return
 
     assignee = random.choice(candidates)
